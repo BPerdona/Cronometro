@@ -39,7 +39,7 @@ object ServiceHelper {
 
     fun resumePendingIntent(context: Context): PendingIntent{
         val resumeIntent = Intent(context, StopwatchService::class.java).apply {
-            putExtra(STOPWATCH_STATE, StopwatchState.Stopped.name)
+            putExtra(STOPWATCH_STATE, StopwatchState.Started.name)
         }
         return PendingIntent.getService(
             context, RESUME_REQUEST_CODE, resumeIntent, flag
