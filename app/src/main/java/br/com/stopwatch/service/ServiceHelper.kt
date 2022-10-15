@@ -4,6 +4,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import androidx.compose.animation.ExperimentalAnimationApi
 import br.com.stopwatch.MainActivity
 import br.com.stopwatch.util.Constants.CANCEL_REQUEST_CODE
 import br.com.stopwatch.util.Constants.CLICK_REQUEST_CODE
@@ -11,6 +12,7 @@ import br.com.stopwatch.util.Constants.RESUME_REQUEST_CODE
 import br.com.stopwatch.util.Constants.STOPWATCH_STATE
 import br.com.stopwatch.util.Constants.STOP_REQUEST_CODE
 
+@OptIn(ExperimentalAnimationApi::class)
 object ServiceHelper {
 
     private val flag =
@@ -28,7 +30,7 @@ object ServiceHelper {
 
     fun stopPendingIntent(context: Context): PendingIntent{
         val stopIntent = Intent(context, StopwatchService::class.java).apply {
-            putExtra(STOPWATCH_STATE, Stopwatchstate.Stopped.name)
+            putExtra(STOPWATCH_STATE, StopwatchState.Stopped.name)
         }
         return PendingIntent.getService(
             context, STOP_REQUEST_CODE, stopIntent, flag
@@ -37,7 +39,7 @@ object ServiceHelper {
 
     fun resumePendingIntent(context: Context): PendingIntent{
         val resumeIntent = Intent(context, StopwatchService::class.java).apply {
-            putExtra(STOPWATCH_STATE, Stopwatchstate.Stopped.name)
+            putExtra(STOPWATCH_STATE, StopwatchState.Stopped.name)
         }
         return PendingIntent.getService(
             context, RESUME_REQUEST_CODE, resumeIntent, flag

@@ -25,7 +25,6 @@ object NotificationModule {
             .setContentTitle("Cronômetro")
             .setContentText("00:00:00")
             .setSmallIcon(R.drawable.timer_svgrepo_com)
-            .setAutoCancel(false)
             .setOngoing(true)
             .addAction(0,"Parar", ServiceHelper.clickPendingIntent(context))
             .addAction(0,"Cancelar", ServiceHelper.cancelPendingIntent(context))
